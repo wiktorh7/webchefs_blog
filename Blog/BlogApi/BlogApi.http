@@ -1,5 +1,4 @@
 @BlogApi_HostAddress = http://localhost:5293
 
-GET http://localhost:5293/
-
-###
+GET http://localhost:5293/posts
+Accept: application/json
