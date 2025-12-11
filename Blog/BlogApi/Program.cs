@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MySqlX.XDevAPI.Common;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<BlogDbContext>(opt => opt.UseMySQL("Blog"));
+builder.Services.AddDbContext<BlogDbContext>(opt => opt.UseSqlite("Blog"));
 
 var app = builder.Build();
 
