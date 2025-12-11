@@ -7,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BlogDbContext>(opt => opt.UseSqlite("Data Source=Blog.db"));
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<BlogDbContext>();
+    db.Database.EnsureCreated();
+}
 
 app.MapGet("/Posts", async  ( BlogDbContext db) =>
     await db.BlogPosts.ToListAsync());
