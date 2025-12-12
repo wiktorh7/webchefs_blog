@@ -23,18 +23,18 @@ GET {{BlogApi_HostAddress}}/Posts/4
 Accept: application/json
 
 ### Update the created post via PUT (expect 204 No Content if exists)
-PUT {{BlogApi_HostAddress}}/Posts/4
+PUT {{BlogApi_HostAddress}}/Posts/7
 Content-Type: application/json
 
 {
-	"id": 4,
+	"id": 7,
 	"author": "Alice Updated",
-	"position": "Head Chef",
-	"bio": "Updated bio",
+	"position": "Head Chef and Culinary Director",
+	"bio": "Updated bio with more details about experience and specialties, designed to meet the min length requirement.",
 	"date": "2025-12-12T00:00:00Z",
 	"img_url": "https://example.com/alice_updated.jpg",
-	"header": "Updated Header",
-	"content": "Updated content"
+	"header": "A Comprehensive Update on Culinary Techniques",
+	"content": "Updated content describing culinary techniques, ingredients, step-by-step recipes, presentation tips, and reflections. This update contains enough characters to exceed the required minimum content length for validation."
 }
 
 ### Get the post again to confirm changes (PUT currently does not update fields)
