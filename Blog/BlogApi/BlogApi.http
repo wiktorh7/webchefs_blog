@@ -19,15 +19,15 @@ Content-Type: application/json
 }
 
 ### Get the created post (replace 1 with the returned Id if different)
-GET {{BlogApi_HostAddress}}/Posts/1
+GET {{BlogApi_HostAddress}}/Posts/4
 Accept: application/json
 
 ### Update the created post via PUT (expect 204 No Content if exists)
-PUT {{BlogApi_HostAddress}}/Posts/1
+PUT {{BlogApi_HostAddress}}/Posts/4
 Content-Type: application/json
 
 {
-	"id": 1,
+	"id": 4,
 	"author": "Alice Updated",
 	"position": "Head Chef",
 	"bio": "Updated bio",
@@ -38,19 +38,21 @@ Content-Type: application/json
 }
 
 ### Get the post again to confirm changes (PUT currently does not update fields)
-GET {{BlogApi_HostAddress}}/Posts/1
+GET {{BlogApi_HostAddress}}/Posts/4
 Accept: application/json
 
 ### Delete the post (expect 204 No Content)
-DELETE {{BlogApi_HostAddress}}/Posts/1
+DELETE {{BlogApi_HostAddress}}/Posts/6
 
 ### Get deleted post (expect 404 Not Found)
-GET {{BlogApi_HostAddress}}/Posts/1
+GET {{BlogApi_HostAddress}}/Posts/4
 Accept: application/json
 
 ### Not found cases: fetch, update and delete non-existent entity
 GET {{BlogApi_HostAddress}}/Posts/999
 Accept: application/json
+
+###
 
 PUT {{BlogApi_HostAddress}}/Posts/999
 Content-Type: application/json
@@ -66,6 +68,7 @@ Content-Type: application/json
 	"content": "This should return 404"
 }
 
+###
 DELETE {{BlogApi_HostAddress}}/Posts/999
 
 ### Invalid payloads: missing required fields (behavior depends on server validation)
