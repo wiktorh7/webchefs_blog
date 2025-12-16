@@ -1,4 +1,105 @@
 @BlogApi_HostAddress = http://localhost:5293
 
-GET http://localhost:5293/posts
+# List all posts (should be empty initially)
+GET {{BlogApi_HostAddress}}/Posts
 Accept: application/json
+
+### Create a valid post (expect 201 Created)
+POST {{BlogApi_HostAddress}}/Posts
+Content-Type: application/json
+
+{
+	"author": "Alice",
+	"position": "Senior Chef",
+	"bio": "Alice is a long-time blogger and chef.",
+	"date": "2025-12-12T00:00:00Z",
+	"img_url": "https://example.com/alice.jpg",
+	"header": "A Chef's Life",
+	"content": "Today I cooked something delicious..."
+}
+
+### Get the created post (replace 1 with the returned Id if different)
+GET {{BlogApi_HostAddress}}/Posts/4
+Accept: application/json
+
+### Update the created post via PUT (expect 204 No Content if exists)
+PUT {{BlogApi_HostAddress}}/Posts/7
+Content-Type: application/json
+
+{
+	"id": 7,
+	"author": "Alice Updated",
+	"position": "Head Chef and Culinary Director",
+	"bio": "Updated bio with more details about experience and specialties, designed to meet the min length requirement.",
+	"date": "2025-12-12T00:00:00Z",
+	"img_url": "https://example.com/alice_updated.jpg",
+	"header": "A Comprehensive Update on Culinary Techniques",
+	"content": "Updated content describing culinary techniques, ingredients, step-by-step recipes, presentation tips, and reflections. This update contains enough characters to exceed the required minimum content length for validation."
+}
+
+### Get the post again to confirm changes (PUT currently does not update fields)
+GET {{BlogApi_HostAddress}}/Posts/4
+Accept: application/json
+
+### Delete the post (expect 204 No Content)
+DELETE {{BlogApi_HostAddress}}/Posts/6
+
+### Get deleted post (expect 404 Not Found)
+GET {{BlogApi_HostAddress}}/Posts/4
+Accept: application/json
+
+### Not found cases: fetch, update and delete non-existent entity
+GET {{BlogApi_HostAddress}}/Posts/999
+Accept: application/json
+
+###
+
+PUT {{BlogApi_HostAddress}}/Posts/999
+Content-Type: application/json
+
+{
+	"id": 999,
+	"author": "Ghost",
+	"position": "N/A",
+	"bio": "Does not exist",
+	"date": "2025-12-12T00:00:00Z",
+	"img_url": "",
+	"header": "Not Found",
+	"content": "This should return 404"
+}
+
+###
+DELETE {{BlogApi_HostAddress}}/Posts/999
+
+### Invalid payloads: missing required fields (behavior depends on server validation)
+POST {{BlogApi_HostAddress}}/Posts
+Content-Type: application/json
+
+{
+	"author": "",
+	"position": "",
+	"bio": "",
+	"date": "2025-12-12T00:00:00Z",
+	"img_url": "",
+	"header": "",
+	"content": ""
+}
+
+### Another valid post to test multiple creations
+POST {{BlogApi_HostAddress}}/Posts
+Content-Type: application/json
+
+{
+	"author": "Bob",
+	"position": "Junior Chef",
+	"bio": "Bob cooks simple meals.",
+	"date": "2025-12-12T00:00:00Z",
+	"img_url": "https://example.com/bob.jpg",
+	"header": "Bob's Special",
+	"content": "A short recipe." 
+}
+
+### List all posts again to see multiple entries
+GET {{BlogApi_HostAddress}}/Posts
+Accept: application/json
+
