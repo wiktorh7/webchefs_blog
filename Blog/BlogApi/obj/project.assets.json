@@ -3362,19 +3362,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Wojtek\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wojtek\\Desktop\\webchefs_blog\\Blog\\BlogApi\\BlogApi.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\webchefs_blog\\webchefs_blog\\Blog\\BlogApi\\BlogApi.csproj",
       "projectName": "BlogApi",
-      "projectPath": "C:\\Users\\Wojtek\\Desktop\\webchefs_blog\\Blog\\BlogApi\\BlogApi.csproj",
-      "packagesPath": "C:\\Users\\Wojtek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Wojtek\\Desktop\\webchefs_blog\\Blog\\BlogApi\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\webchefs_blog\\webchefs_blog\\Blog\\BlogApi\\BlogApi.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\webchefs_blog\\webchefs_blog\\Blog\\BlogApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Wojtek\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
