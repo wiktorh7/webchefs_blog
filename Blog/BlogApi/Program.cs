@@ -7,7 +7,21 @@ using MySqlX.XDevAPI.Common;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BlogDbContext>(opt => opt.UseSqlite("Data Source=Blog.db"));
 
+// CORS - allow the frontend dev server (adjust or tighten for production)
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://127.0.0.1:5500", "http://localhost:5500")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+// Enable CORS middleware
+app.UseCors();
 
 static IResult? ValidateModel<T>(T model)
 {

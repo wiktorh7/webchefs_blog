@@ -39,94 +39,19 @@
                 <img src="img/Dot.svg" alt="kropka"> Ostatnie posty
             </div>
             <hr>
-            <div class="blog-grid">
-                <div class="blog-article">
-                    <a href="" class="link"> <!--TUTAJ TRZEBA TO JAKOS ZGRAC Z BACKENDEM TO SA TYLKO PLACEHOLDERY NARAZIE, MOZE JAKIS FOREACH OSTATNIE CZY COS NW I WTEDY ARTICLE.HTML/?ID=x-->
-                        <img src="img/placeholder.png" alt="" class="blog-image">
-                        <div class="blog-content">
-                            <h3 class="blog-title">Harnessing the Power of the Sun: Exploring the World of Solar Energy</h3>
-                            <p class="blog-description">Solar energy is revolutionizing the way we power our world. In this blog post, we'll delve into the incredible potential of solar technology, its environmental benefits, and how you can tap into this sustainable energy source for a brighter future.</p>
-                            <div class="blog-meta">
-                                <span class="blog-author">Natalia Stec</span>
-                                <span class="blog-date">December 11, 2025</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="blog-article">
-                    <a href="" class="link"> <!--TUTAJ TRZEBA TO JAKOS ZGRAC Z BACKENDEM TO SA TYLKO PLACEHOLDERY NARAZIE, MOZE JAKIS FOREACH OSTATNIE CZY COS NW I WTEDY ARTICLE.HTML/?ID=x-->
-                        <img src="img/placeholder.png" alt="" class="blog-image">
-                        <div class="blog-content">
-                            <h3 class="blog-title">Harnessing the Power of the Sun: Exploring the World of Solar Energy</h3>
-                            <p class="blog-description">Solar energy is revolutionizing the way we power our world. In this blog post, we'll delve into the incredible potential of solar technology, its environmental benefits, and how you can tap into this sustainable energy source for a brighter future.</p>
-                            <div class="blog-meta">
-                                <span class="blog-author">Natalia Stec</span>
-                                <span class="blog-date">December 11, 2025</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="blog-article">
-                    <a href="" class="link"> <!--TUTAJ TRZEBA TO JAKOS ZGRAC Z BACKENDEM TO SA TYLKO PLACEHOLDERY NARAZIE, MOZE JAKIS FOREACH OSTATNIE CZY COS NW I WTEDY ARTICLE.HTML/?ID=x-->
-                        <img src="img/placeholder.png" alt="" class="blog-image">
-                        <div class="blog-content">
-                            <h3 class="blog-title">Harnessing the Power of the Sun: Exploring the World of Solar Energy</h3>
-                            <p class="blog-description">Solar energy is revolutionizing the way we power our world. In this blog post, we'll delve into the incredible potential of solar technology, its environmental benefits, and how you can tap into this sustainable energy source for a brighter future.</p>
-                            <div class="blog-meta">
-                                <span class="blog-author">Natalia Stec</span>
-                                <span class="blog-date">December 11, 2025</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="blog-article">
-                    <a href="" class="link"> <!--TUTAJ TRZEBA TO JAKOS ZGRAC Z BACKENDEM TO SA TYLKO PLACEHOLDERY NARAZIE, MOZE JAKIS FOREACH OSTATNIE CZY COS NW I WTEDY ARTICLE.HTML/?ID=x-->
-                        <img src="img/placeholder.png" alt="" class="blog-image">
-                        <div class="blog-content">
-                            <h3 class="blog-title">Harnessing the Power of the Sun: Exploring the World of Solar Energy</h3>
-                            <p class="blog-description">Solar energy is revolutionizing the way we power our world. In this blog post, we'll delve into the incredible potential of solar technology, its environmental benefits, and how you can tap into this sustainable energy source for a brighter future.</p>
-                            <div class="blog-meta">
-                                <span class="blog-author">Natalia Stec</span>
-                                <span class="blog-date">December 11, 2025</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="blog-article">
-                    <a href="" class="link"> <!--TUTAJ TRZEBA TO JAKOS ZGRAC Z BACKENDEM TO SA TYLKO PLACEHOLDERY NARAZIE, MOZE JAKIS FOREACH OSTATNIE CZY COS NW I WTEDY ARTICLE.HTML/?ID=x-->
-                        <img src="img/placeholder.png" alt="" class="blog-image">
-                        <div class="blog-content">
-                            <h3 class="blog-title">Harnessing the Power of the Sun: Exploring the World of Solar Energy</h3>
-                            <p class="blog-description">Solar energy is revolutionizing the way we power our world. In this blog post, we'll delve into the incredible potential of solar technology, its environmental benefits, and how you can tap into this sustainable energy source for a brighter future.</p>
-                            <div class="blog-meta">
-                                <span class="blog-author">Natalia Stec</span>
-                                <span class="blog-date">December 11, 2025</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="blog-article">
-                    <a href="" class="link"> <!--TUTAJ TRZEBA TO JAKOS ZGRAC Z BACKENDEM TO SA TYLKO PLACEHOLDERY NARAZIE, MOZE JAKIS FOREACH OSTATNIE CZY COS NW I WTEDY ARTICLE.HTML/?ID=x-->
-                        <img src="img/placeholder.png" alt="" class="blog-image">
-                        <div class="blog-content">
-                            <h3 class="blog-title">Harnessing the Power of the Sun: Exploring the World of Solar Energy</h3>
-                            <p class="blog-description">Solar energy is revolutionizing the way we power our world. In this blog post, we'll delve into the incredible potential of solar technology, its environmental benefits, and how you can tap into this sustainable energy source for a brighter future.</p>
-                            <div class="blog-meta">
-                                <span class="blog-author">Natalia Stec</span>
-                                <span class="blog-date">December 11, 2025</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+            <!-- Dynamic posts will be injected here by Js/blog.js -->
+            <div id="blog-grid" class="blog-grid">
+                <!-- posts inserted dynamically -->
             </div>
-        </section>
+        </section> 
         <div class="button-div">
             <a href=""><button class="posts-button">View All Post</button></a> <!--SPIS ARTYKULOW/WPISOW-->
         </div>
 
         <section class="form">
             <h2>Opublikuj nowy post</h2>
-            <form class="post-form">
+            <form class="post-form" id="post-form">
+                <div id="post-form-status" class="form-status" aria-live="polite"></div>
                 <div class="form-section">
                     <div class="top">
                         <h3>Informacje podstawowe</h3>
@@ -186,5 +111,6 @@
             </div>
         </a>
     </footer>
+    <script src="Js/blog.js" defer></script>
 </body>
 </html>
