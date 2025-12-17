@@ -1,11 +1,14 @@
-async function fetchBlogPosts() {
+let currentLimit = 6;
+
+async function fetchBlogPosts(limit = 6) {
     try {
         const response = await fetch('http://localhost:5293/Posts');
         if (!response.ok) throw new Error(response.statusText || 'Network error');
         const posts = await response.json();
         const sorted = (posts || []).slice().sort((a, b) => Number(b.id ?? b.Id ?? 0) - Number(a.id ?? a.Id ?? 0));
-        console.log('Fetched posts (sorted):', sorted);
-        renderPosts(sorted);
+        const displayedPosts = limit ? sorted.slice(0, limit) : sorted;
+        console.log('Fetched posts (sorted):', displayedPosts);
+        renderPosts(displayedPosts);
     } catch (error) {
         console.error('Error fetching posts:', error);
         const grid = document.getElementById('blog-grid');
@@ -17,7 +20,7 @@ async function deletePost(id) {
     try {
         const res = await fetch(`http://localhost:5293/Posts/${id}`, { method: 'DELETE' });
         if (res.ok) {
-            fetchBlogPosts(); // refresh posts
+            fetchBlogPosts(currentLimit); // refresh posts
         } else {
             alert('Failed to delete post');
         }
@@ -309,7 +312,7 @@ async function handlePostFormSubmit(e) {
             const created = await res.json();
             showFormStatus('Post został utworzony.', false);
             document.getElementById('post-form')?.reset();
-            fetchBlogPosts();
+            fetchBlogPosts(currentLimit);
         } else if (res.status === 400) {
             const data = await res.json();
             const msg = data?.errors ? Object.values(data.errors).flat().join(' ') : (data?.title || JSON.stringify(data));
@@ -333,7 +336,10 @@ function readFileAsDataURL(file) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('blog-grid')) fetchBlogPosts();
+    let currentLimit = 6;
+    let isShowingAll = false;
+
+    if (document.getElementById('blog-grid')) fetchBlogPosts(currentLimit);
 
     if (document.querySelector('.blog-main')) {
         const id = getQueryParam('id');
@@ -358,6 +364,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 const img = document.querySelector('.file-upload-label img');
                 if (img) img.style.display = 'none';
+            }
+        });
+    }
+
+    const viewAllBtn = document.querySelector('.posts-button');
+    if (viewAllBtn) {
+        viewAllBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isShowingAll) {
+                currentLimit = 6;
+                fetchBlogPosts(6);
+                viewAllBtn.textContent = 'View All Posts';
+                isShowingAll = false;
+            } else {
+                currentLimit = null;
+                fetchBlogPosts(null);
+                viewAllBtn.textContent = 'Show Less Posts';
+                isShowingAll = true;
             }
         });
     }
