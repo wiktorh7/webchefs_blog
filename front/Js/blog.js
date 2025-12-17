@@ -13,6 +13,19 @@ async function fetchBlogPosts() {
     }
 }
 
+async function deletePost(id) {
+    try {
+        const res = await fetch(`http://localhost:5293/Posts/${id}`, { method: 'DELETE' });
+        if (res.ok) {
+            fetchBlogPosts(); // refresh posts
+        } else {
+            alert('Failed to delete post');
+        }
+    } catch (err) {
+        console.error('Error deleting post:', err);
+    }
+}
+
 function renderPosts(posts) {
     const grid = document.getElementById('blog-grid');
     if (!grid) return;
@@ -77,6 +90,40 @@ function renderPosts(posts) {
         link.appendChild(contentDiv);
 
         articleWrap.appendChild(link);
+
+        // Add delete button
+        articleWrap.style.position = 'relative';
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.innerHTML = '🗑️';
+        deleteBtn.style.position = 'absolute';
+        deleteBtn.style.top = '10px';
+        deleteBtn.style.right = '10px';
+        deleteBtn.style.background = 'rgba(255, 0, 0, 0.8)';
+        deleteBtn.style.color = 'white';
+        deleteBtn.style.border = 'none';
+        deleteBtn.style.borderRadius = '50%';
+        deleteBtn.style.width = '30px';
+        deleteBtn.style.height = '30px';
+        deleteBtn.style.cursor = 'pointer';
+        deleteBtn.style.display = 'none';
+        deleteBtn.style.zIndex = '10';
+        deleteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (confirm('Are you sure you want to delete this post?')) {
+                deletePost(id);
+            }
+        });
+        articleWrap.appendChild(deleteBtn);
+
+        // Show delete button on hover
+        articleWrap.addEventListener('mouseenter', () => {
+            deleteBtn.style.display = 'block';
+        });
+        articleWrap.addEventListener('mouseleave', () => {
+            deleteBtn.style.display = 'none';
+        });
 
         grid.appendChild(articleWrap);
     });
@@ -298,4 +345,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const form = document.getElementById('post-form');
     if (form) form.addEventListener('submit', handlePostFormSubmit);
+
+    const fileInput = document.getElementById('main-image');
+    if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const span = document.querySelector('.file-upload-label span');
+                if (span) {
+                    span.textContent = file.name;
+                    span.style.display = 'block';
+                }
+                const img = document.querySelector('.file-upload-label img');
+                if (img) img.style.display = 'none';
+            }
+        });
+    }
 });
