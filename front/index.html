@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header class="top-header">
@@ -39,13 +40,11 @@
                 <img src="img/Dot.svg" alt="kropka"> Ostatnie posty
             </div>
             <hr>
-            <!-- Dynamic posts will be injected here by Js/blog.js -->
             <div id="blog-grid" class="blog-grid">
-                <!-- posts inserted dynamically -->
             </div>
         </section> 
         <div class="button-div">
-            <a href=""><button class="posts-button">View All Post</button></a> <!--SPIS ARTYKULOW/WPISOW-->
+            <a href=""><button class="posts-button">View All Post</button></a>
         </div>
 
         <section class="form">
@@ -111,6 +110,7 @@
             </div>
         </a>
     </footer>
+    <script src="Js/posts.js" defer></script>
     <script src="Js/blog.js" defer></script>
 </body>
 </html>
